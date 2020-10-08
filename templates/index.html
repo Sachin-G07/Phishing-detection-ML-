@@ -1,0 +1,387 @@
+{% extends 'layout.html'%}
+
+{% block title %} 
+PhishDetect
+{% endblock title %}
+
+
+{% block body %}
+
+<div id="tm-bg"></div>
+<div id="tm-wrap">
+    <div class="tm-main-content">
+        <div class="container tm-site-header-container mb-5 ">
+            <div class="row rounded ">
+                <div class=" sac col-sm-12 col-md-6 col-lg-6 col-md-6 col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col ">
+                    <div class="tm-site-header">
+                        <!-- <h1 class="mb-4 ">Phish Detect</h1> -->
+                        <a href="{{url_for('index') }}"> <img src="{{url_for('static', filename='img/F1.png') }}" class="img-fluid mb-1"> </a> 
+
+                        
+
+
+
+
+                        <form  method="post" action="{{url_for('getURL')}}">
+
+
+                            <div class="form-row justify-content-center">
+
+                                <input type="text" class="form-control bg-light text-dark rounded m-auto" id="url" name="url" value="{{request.form.url}}" placeholder="Enter Url to check....." required=""  oninvalid="this.setCustomValidity('Please Enter URL')" oninput="setCustomValidity('')" > 
+
+
+
+                                      <!-- {% with messages = get_flashed_messages() %}
+                                      {% if messages %}
+                                      
+                                        {% for message in messages %}
+                                        <li>{{ message }}</li>
+                                        {% endfor %}
+                                    
+                                    {% endif %}
+                                    {% endwith %} -->
+
+                                    <button type="submit" vlaue="Check" class="btn-lg btn-primary mt-2">Check</button>
+                                </div>
+
+
+
+                                <div class="d-flex justify-content-center mt-4">
+
+
+
+
+                                    {% if status %}
+                                    {% if status == 'This website is Legitimate.'
+                                    %}
+                                    <strong class="alert alert-success" role="ale
+                                    rt">{{status}}</strong>
+
+                                    {% elif status == 'This website is Phishing.'%}
+                                    
+                                    <strong class="alert alert-danger" role="ale
+                                    rt">{{status}}</strong>
+
+                                    {% else %}
+
+                                    <strong class="alert alert-warning" role="alert">
+                                        {{status}}
+                                    </strong> 
+                                    {% endif %} {% endif %}
+
+
+
+                                </div>
+                            </form>
+
+
+
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="content m-sm-auto">
+                            <div class="grid ">
+                                <div class="grid__item" id="home-link">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas  fa-info-circle fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Phishing ?</span>
+                                            <div class="product__bg"></div>        
+                                        </div>                                    
+                                        <div class="product__description ">
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <!-- <h2 class="tm-page-title">what is Phishing ?</h2> -->        
+                                                </div>
+                                            </div>                                        
+                                            <div class="row" >
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <img src="{{url_for('static', filename='img/wp1.jpg')}}"  class="img-fluid mb-3">
+                                                    <p>
+                                                        "Phishing is a cybercrime in which a target or targets are contacted by email, telephone or text message by someone posing as a legitimate institution to lure individuals into providing sensitive data such as personally identifiable information, banking and credit card details, and passwords". 
+                                                    </p>
+                                                    <p> Phishing is a type of social engineering attack often used to steal user data, including login credentials and credit card numbers. It occurs when an attacker, masquerading as a trusted entity, dupes a victim into opening an email, instant message, or text message. The recipient is then tricked into clicking a malicious link, which can lead to the installation of malware, the freezing of the system as part of a ransomware attack or the revealing of sensitive information.</p>
+                                                    <p>
+
+                                                        <h3>Phishing Techniques</h3><br>
+                                                        <h4>Spear phishing:</h4>
+                                                        <P>
+                                                            spear phishing is a much more targeted attack in which the hacker knows which specific individual or organization they are after. They do research on the target in order to make the attack more personalized and increase the likelihood of the target falling into their trap.<br></P>
+                                                            <h4>Session Hijacking:</h4> 
+                                                            <p>
+                                                            In session hijacking, the phisher exploits the web session control mechanism to steal information from the user. In a simple session hacking procedure known as session sniffing, the phisher can use a sniffer to intercept relevant information so that he or she can access the Web server illegally.</p>
+
+
+                                                            <h4>Email/Spam:</h4><p>
+                                                                Using the most common phishing technique, the same email is sent to millions of users with a request to fill in personal details. These details will be used by the phishers for their illegal activities.<br></p>
+
+
+                                                                <h4>Content Injection:</h4>
+                                                                <p>
+                                                                Content injection is the technique where the phisher changes a part of the content on the page of a reliable website. This is done to mislead the user to go to a page outside the legitimate website where the user is then asked to enter personal information.</p>
+
+                                                            </p>    
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <p><h4>Vishing (Voice Phishing):</h4>
+                                                                <p>
+                                                                    In phone phishing, the phisher makes phone calls to the user and asks the user to dial a number. The purpose is to get personal information of the bank account through the phone. Phone phishing is mostly done with a fake caller ID.<br></p>
+                                                                    <h4>Smishing (SMS Phishing):</h4><p>
+                                                                        Phishing conducted via Short Message Service (SMS), a telephone-based text messaging service. A smishing text, for example, attempts to entice a victim into revealing personal information via a link that leads to a phishing website.<br></p>
+                                                                        <h4>Whaling:</h4><p>
+                                                                        The term whaling refers to spear phishing attacks directed specifically at senior executives and other high-profile targets.In these cases, the content will be crafted to target an upper manager and the person's role in the company.</p>
+                                                                    </p>
+
+
+
+                                                                    <h3>Phishing Mechanism</h3>
+                                                                    <p>
+                                                                    The phishing mechanism is shown in Figure . The fake website is the clone of targeted genuine website, and it always contains some input fields (e.g., text box). When the user submits his/her personal details, the information is transferred to the attacker. An attacker steals the credential of the innocent user by performing following steps: </p> <img src="{{url_for('static', filename='img/pt1.jpg') }}" class="img-fluid"> <br> 
+                                                                    <p>
+                                                                        Ways To Avoid Phishing Scams<br>
+                                                                        <ul>
+                                                                        <li> Always check the spelling of the URLs in email links before you click or enter sensitive information.</li>
+                                                                        <li>Watch out for URL redirects, where you're subtly sent to a different website with identical design.</li>
+                                                                        <li> If you receive an email from a source you know but it seems suspicious, contact that source with a new email, rather than just hitting reply.</li>
+                                                                        <li>Don't post personal data, like your birthday, vacation plans, or your address or phone number, publicly on social media.</li>
+                                                                        <li>Two-factor authentication (2FA) is the most effective method for countering phishing attacks, as it adds an extra verification layer when logging in to sensitive applications.</li>
+                                                                       <li> Educational campaigns can also help diminish the threat of phishing attacks by enforcing secure practices, such as not clicking on external email links.</li>
+                                                                    </ul>
+                                                                    </p>
+
+                                                                </div>                                        
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- grid-2 -->
+
+                                                <div class="grid__item" id="team-link">
+                                                    <div class="product">
+                                                        <div class="tm-nav-link">
+                                                            <i class="fas fa-users fa-3x tm-nav-icon"></i>
+                                                            <span class="tm-nav-text">Our Team</span>
+                                                            <div class="product__bg"></div>            
+                                                        </div>                                     
+                                                        <div class="product__description">
+                                                            <div class="p-sm-4 p-2">
+                                                                <div class="row mb-3">
+                                                                    <div class="col-12">
+                                                                        <h2 class="tm-page-title">Our Team</h2>        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row d-flex justify-content-center ">
+                                                                    <!--tm-reverse-sm -->
+
+
+
+                                                                    <div class="col-sm-3 card m-sm-auto mb-2 " style="width:250px">
+                                                                        <img class="card-img-top" src="{{url_for('static', filename='img/sac-min.jpg') }}" alt="Card image" width="200px" height="200px">
+                                                                        <div class="card-body text-dark">
+                                                                          <h5 class="card-title font-weight-bold">enter text</h5>
+                                                                          <p class="card-text h6">enter text</p>
+
+                                                                      </div>
+                                                                  </div>
+
+                                                                  <div class="col-sm-3 card  m-sm-auto mb-2" style="width:250px">
+                                                                    <img class="card-img-top" src="{{url_for('static', filename='img/nischal-min.jpg') }}" alt="Card image" width="200px" height="200px">
+                                                                    <div class="card-body text-dark">
+                                                                      <h5 class="card-title font-weight-bold">enter text</h5>
+                                                                      <p class="card-text h6 ">enter text</p>
+
+                                                                  </div>
+                                                              </div>
+
+                                                              <div class=" col-sm-3 card  m-sm-auto  " style="width:250px">
+                                                                <img class="card-img-top " src="{{url_for('static', filename='img/sagar.jpg') }}" alt="Card image" width="200px" height="200px">
+                                                                <div class="card-body text-dark ">
+                                                                  <h5 class="card-title font-weight-bold">enter text</h5>
+                                                                  <p class="card-text h6 ">enter text</p>
+
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <!-- grid-3 -->
+
+                                      <div class="grid__item">
+                                        <div class="product">
+                                            <div class="tm-nav-link">
+                                                <i class="fas fas fa-cubes fa-3x tm-nav-icon"></i>
+                                                <span class="tm-nav-text">About<br> Phish-Detect</span>
+                                                <div class="product__bg"></div>             
+                                            </div>                                                                 
+                                            <div class="product__description">
+                                                <div class="p-sm-4 p-2 ">
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-5">
+                                                         <img src="{{url_for('static', filename='img/F1.png') }}" class="img-fluid ">       
+                                                     </div>
+                                                 </div>
+                                                 <div class="row mb-3">
+                                                    <div class="col-12">
+
+                                                        <h3>Phish-Detect</h3>
+                                                        <p>As the digital world is growing so huge as more than we ever expect, internet is playing the integral part in growing the tech industry. Along with the internet comes various components like websites, web apps, mobile apps and many more which are prone to be attacked which can create havoc in different perspective of life. So analyzing the social security as the most discussed concerned in the today’s time, we come up with the idea of Phish-detect which is used to detect the scam websites  and prevent users from being trapped & lured into providing sensitive data such as personally identifiable information, banking and credit card details, and passwords etc. </p>
+                                                        <p>
+                                                            Scam websites are copy of original website which  look like a real one so that people are prompted to enter the information from there and attacker are able to  steal the information from the customer end points.
+                                                        </p>
+
+                                                        <h3>How Phish-Detect works ? </h3>
+                                                        <p>Phish- Detect is a web application trained with machine learning algorithm to identify a malicious URL .We used two ML algorithms i.e. Random Forest classifier (RFC) and Support Vector classifier (SVC)  to train the model and we got 97.7% & 94% test accuracy respectively. Hence, the model is trained with RFC algorithm with more than 8000 datasets having 16 major features.</p>
+
+                                                        <img src="{{url_for('static', filename='img/mec.jpg') }}" alt="Image"  class=" img-fluid  mx-auto d-block"> <br>
+
+                                                        <p>Phish-Detect takes URL as an input and fed URL features are tested with trained model to predict given URL is malicious or not.
+                                                           The main features that influenced the prediction are shown in graph. 
+                                                           <br>
+                                                   <!-- •   Age of SSL Certificate<br>
+                                                   •   URL of Anchor<br>
+                                                   •   Prefix or  Suffix separated  by  (-) to  domain <br>
+                                                   •   Domain Registration Length<br>
+                                                   •   Sub Domain and Multi Sub Domains<br> -->
+                                                   
+
+                                                   <img src="{{url_for('static', filename='img/depn.png') }}" alt="Image"   class=" img-fluid mx-auto d-block" style="width:500px">
+                                               </p>
+
+                                           </div>
+                                       </div>
+
+                                   </div>
+                               </div>       
+                           </div>
+                       </div>
+
+
+                       <!-- grid-4 -->
+                       <div class="grid__item">
+                        <div class="product">
+                            <div class="tm-nav-link">
+                                <i class="fas fa-comments fa-3x tm-nav-icon"></i>
+                                <span class="tm-nav-text">Contact Us</span>
+                                <div class="product__bg"></div>             
+                            </div>                                                              
+                            <div class="product__description">
+                                <div class="pt-sm-4 pb-sm-4 pl-sm-5 pr-sm-5 pt-2 pb-2 pl-3 pr-3">
+                                    <div class="row mb-3">
+                                        <div class="col-12">
+                                            <h2 class="tm-page-title">Contacts</h2>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-center mb-4">
+                                        <img src="{{url_for('static', filename='img/F1.png') }}" alt="Image"   class=" img-fluid" style="width:100px">
+                                    </div>
+                                    
+                                        <div class="row align-items-lg-center">
+                                            <ul class="mr-5">
+                                             
+                                             <li>  Scho7gtm@gmail.com </li>
+                                             <li>   ................. </li>
+                                         </ul>
+                                         <ul class="mr-5">
+                                             <li>  ******************* </li>
+                                             <li>  ************** </li>
+                                         </ul>
+                                         <ul>
+                                             <li> ****************  </li>
+                                             <li> *********** </li>
+                                         </ul>
+                                     </div>
+                                 
+                                         
+
+
+                                     
+                                                                            
+                             </div>
+                         </div>
+                     </div>
+                 </div> 
+
+
+             </div>                       
+         </div>
+     </div>                
+ </div>
+
+
+
+ <!-- table  -->
+ <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 lg mt-5 mb-auto p-2 rounded" >
+
+        <table class="table  table-responsive-xl  " id="dataTable">
+         <thead class="thead bg-info ">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Checked Urls</th>         
+          </tr>
+      </thead>
+
+      <tbody>
+        {% for site in sites %}
+        <tr class="">
+           <td width="20px" class="text-dark">{{site.id}}</td> 
+
+           <td class="url">{% if site.status1 %}
+            {% if site.status1 == 'Legitimate'
+            %}
+            <p class="text-success ">{{site.url}}</p>
+
+            {% elif site.status1 == 'Phishing' %}
+
+            <p class="text-danger ">{{site.url}} </p>
+
+            {% else %}
+
+
+            <p class="text-warning ">{{site.url}} </p>
+
+            {% endif %} {% endif %}
+
+
+        </td>
+
+    </tr>
+    {% endfor %}
+</tbody>
+<tfoot>
+</tfoot>
+</table>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+<!-- footer -->
+
+<footer class="d-flex" style="z-index: -1;" >
+
+
+    <p class="  m-auto tm-copyright-text mt-3 " >Copyright &copy; <span class="tm-current-year"> 2020 </span> Phish-Detect.</p>
+</footer>
+
+
+</div>
+<!-- .tm-main-content -->  
+</div>
+
+
+
+{% endblock body %}
